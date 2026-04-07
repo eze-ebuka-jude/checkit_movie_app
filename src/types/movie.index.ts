@@ -12,5 +12,6 @@ export default interface MovieData   {
     title: string,
     video: boolean,
     vote_average: number,
-    vote_count: number
+    vote_count: number,
+    media_type: string
 }

@@ -8,7 +8,7 @@ type Genre = {
     name: string;
 };
 
-async function getMovie(id: string) {
+export async function getMovie(id: string) {
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
     const res = await fetch(
         url,
@@ -48,14 +48,14 @@ export default async function DetailsPage({
                     }}
                 />
 
-                <div className="bg-gray-100/20! border rounded-lg absolute left-8 backdrop-blur-sm! -bottom-16 w-[40%] h-28 p-5! text-white! font-bold text-2xl">
+                <div className="bg-gray-100/20! border rounded-lg absolute left-8 backdrop-blur-sm! -bottom-16 md:w-[40%] w-[80%] h-auto p-5! text-white! font-bold text-2xl">
                     <span className="text-sm!">CheckitMovies / Movies</span>
-                    <h1 className="py-3! font-bold text-4xl!">{title}</h1>
+                    <h1 className="py-3! font-bold text-2xl!">{title}</h1>
                 </div>
             </div>
 
-            <div className="mt-42! flex items-start justify-center gap-14! w-full!">
-                <div>
+            <div className="mt-42! flex lg:items-start md:items-center items-center justify-center gap-14! w-full!">
+                <div className="lg:block md:hidden hidden">
                     <Image
                         src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                         alt={data.title}
@@ -65,7 +65,7 @@ export default async function DetailsPage({
                     />
                 </div>
 
-                <div className="flex flex-col items-start gap-8! w-1/2!">
+                <div className="flex flex-col items-start gap-8! lg:w-1/2! md:w-full! w-full!">
                     <div className="text-[#A8AEBF] pb-4!">
                         <h4 className="text-2xl! font-bold">{data.tagline}</h4>
                         <p className="w-full text-sm">{data.overview}</p>

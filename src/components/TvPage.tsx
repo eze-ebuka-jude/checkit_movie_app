@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type TvData from "@/types/tv.index";
 import { useDebounce } from "@/hooks/useDebounce";
 import TvDetailsPage from "./TvDetailsPage";
+import Spinner from "./Spinner";
 
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY
 const API_URL = process.env.NEXT_PUBLIC_TMDB_URL
@@ -35,7 +36,13 @@ const TvPage = () => {
     }, [url])
 
     return (
-        <TvDetailsPage page={page} setPage={setPage} setSearch={setSearch} tv_Data={tvData} />
+        <>
+            {tvData ? (
+                <TvDetailsPage page={page} setPage={setPage} setSearch={setSearch} tv_Data={tvData} />
+            ) : (
+                <Spinner />
+            )}
+        </>
     )
 }
 
