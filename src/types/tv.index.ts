@@ -1,4 +1,4 @@
-export default interface tvData {
+export default interface TvData {
     backdrop_path: string,
     first_air_date: string,
     genre_ids: [number],

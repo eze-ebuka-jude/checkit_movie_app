@@ -1,7 +1,12 @@
 import Image from "next/image";
+import { CiStar } from "react-icons/ci";
 
-const API_KEY = process.env.TMDB_API_KEY;
-console.log(API_KEY);
+const API_KEY = process.env.TMDB_API_KEY
+
+type Genre = {
+    id: number;
+    name: string;
+};
 
 async function getMovie(id: string) {
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
@@ -29,19 +34,72 @@ export default async function DetailsPage({
 
     const data = await getMovie(id);
 
-    //   const title = data.title || data.name;
-    //   const date = data.release_date || data.first_air_date;
+    const title = data.title;
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8 text-white">
+        <div className="max-w-7xl! mx-auto! px-4! py-8! text-white">
 
-            {/* Backdrop */}
-            <div
-                className="w-full h-75 rounded-xl bg-cover bg-center mb-6"
-                style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
-                }}
-            />
+            <div className="relative">
+                {/* Backdrop */}
+                <div
+                    className="w-full h-85 rounded-xl bg-cover bg-center mb-6"
+                    style={{
+                        backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
+                    }}
+                />
+
+                <div className="bg-gray-100/20! border rounded-lg absolute left-8 backdrop-blur-sm! -bottom-16 w-[40%] h-28 p-5! text-white! font-bold text-2xl">
+                    <span className="text-sm!">CheckitMovies / Movies</span>
+                    <h1 className="py-3! font-bold text-4xl!">{title}</h1>
+                </div>
+            </div>
+
+            <div className="mt-42! flex items-start justify-center gap-14! w-full!">
+                <div>
+                    <Image
+                        src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                        alt={data.title}
+                        width={700}
+                        height={550}
+                        className="w-170! h-163! rounded-2xl"
+                    />
+                </div>
+
+                <div className="flex flex-col items-start gap-8! w-1/2!">
+                    <div className="text-[#A8AEBF] pb-4!">
+                        <h4 className="text-2xl! font-bold">{data.tagline}</h4>
+                        <p className="w-full text-sm">{data.overview}</p>
+                    </div>
+
+                    <div>
+                        {data.vote_average >= 0 && (
+                            <div className=" bg-white rounded-lg px-2! py-1!">
+                                <span className="text-md font-bold flex gap-1 w-full text-[#FFAD49]"><CiStar className="h-5! w-5!" /> {data.vote_average.toFixed(1)}</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="flex flex-col gap-4!">
+                        <span className="text-[#A8AEBF]">Type</span>
+                        <h3 className="text-2xl! font-bold">Movie</h3>
+                    </div>
+
+                    <div className="flex flex-col gap-4!">
+                        <span className="text-[#A8AEBF]">Release Date:</span>
+                        <h3 className="text-2xl! font-bold">{data.release_date ? data.release_date : "N/A"}</h3>
+                    </div>
+
+                    <div className="flex flex-col gap-4!">
+                        <span className="text-[#A8AEBF]">Runtime</span>
+                        <h3 className="text-2xl! font-bold">{data.runtime ? data.runtime + ' mins' : "N/A"}</h3>
+                    </div>
+
+                    <div className="flex flex-col gap-4!">
+                        <span className="text-[#A8AEBF]">Genres</span>
+                        <h3 className="text-2xl! font-bold">{data.genres?.map((genre: Genre) => genre.name).join(", ")}</h3>
+                    </div>
+                </div>
+            </div>
 
         </div>
     );
