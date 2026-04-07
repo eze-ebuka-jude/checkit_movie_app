@@ -16,7 +16,7 @@ interface TvDetailsProps {
 const TvDetailsPage = ({ page, setPage, setSearch, tv_Data }: TvDetailsProps) => {
     return (
         <>
-            {tv_Data ? (
+            {tv_Data.length >= 1 ? (
                 <>
                     <div className="mt-24! flex flex-col lg:items-start md:items-center items-center">
                         <p className="md:w-2xl! w-full! text-center! lg:text-start! py-1! text-[#A8AEBF]">

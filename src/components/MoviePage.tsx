@@ -37,7 +37,7 @@ const MoviePage = () => {
 
     return (
         <>
-            {movieData ? (
+            {movieData.length >= 1 ? (
                 <MovieDetailsPage page={page} setPage={setPage} setSearch={setSearch} movie_Data={movieData} />
             ) : (
                 <Spinner />

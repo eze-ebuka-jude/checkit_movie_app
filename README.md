@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is my Checkit Movies App file showing how to get started
 
 ## Getting Started
 
-First, run the development server:
+# 1. Clone the repo
 
-```bash
+git clone https://github.com/eze-ebuka-jude/checkit_movie_app.git
+
+# 2. Move into the project
+
+cd your-repo
+
+# 3. Install dependencies
+
+npm install
+
+# 4. Add environment variables
+
+cp .env.example .env.local
+
+# 5. Start development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Architecture Decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# 1. Nextjs App Structure
 
-## Learn More
+Used App Router for file based routing
 
-To learn more about Next.js, take a look at the following resources:
+# 2. Seperation of concerns
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Clean UI, Logic reusability and code scalability
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 3. State Management
 
-## Deploy on Vercel
+Used useState and useEffect for simpler and unnecessary complexity for the app size
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Performance Optimization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 1. Image Optimization
+
+Used Nextjs <Image /> for lazy loading, responsive images and bandwidth usage
+
+# 2. Code Splitting
+
+Used for faster initial load, only load necessary code
+
+# 3. Debounced search
+
+To prevent excessive API calls to improve performance and API usage efficiency

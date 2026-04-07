@@ -37,7 +37,7 @@ const TvPage = () => {
 
     return (
         <>
-            {tvData ? (
+            {tvData.length >= 1 ? (
                 <TvDetailsPage page={page} setPage={setPage} setSearch={setSearch} tv_Data={tvData} />
             ) : (
                 <Spinner />

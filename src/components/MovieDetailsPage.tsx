@@ -16,7 +16,7 @@ interface MovieDetailsProps {
 const MovieDetailsPage = ({ page, setPage, setSearch, movie_Data }: MovieDetailsProps) => {
     return (
         <>
-            {movie_Data ? (
+            {movie_Data.length >= 1 ? (
                 <>
                     <div className="mt-24! flex flex-col lg:items-start md:items-center items-center">
                         <p className="md:w-2xl! w-full! text-center! lg:text-start! py-1! text-[#A8AEBF]">

@@ -49,7 +49,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            {allData ? (
+            {allData.length >= 1 ? (
                 <>
                     <div className="mt-22! text-white flex   mb-8!  flex-col gap-8 items-center justify-center w-full">
                         <div className="grid lg:grid-cols-4 md:grid-cols-3 mt-14 gap-6 w-full!">
