@@ -11,6 +11,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Checkit Movies App",
   description: "A movie listing app that displays movies and allow search your favorite",
+  icons: {
+    icon: "/icon.png",
+  }
 };
 
 export default function RootLayout({
